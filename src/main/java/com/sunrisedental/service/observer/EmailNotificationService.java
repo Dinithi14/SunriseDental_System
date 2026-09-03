@@ -31,7 +31,7 @@ public class EmailNotificationService implements NotificationObserver {
                 appointment.getTreatmentName(), appointment.getAppointmentDate(),
                 appointment.getAppointmentTime(), appointment.getRoomNumber());
 
-        sendEmail(appointment.getAppointmentId(), appointment.getPatientContact(), appointment.getPatientEmail(), body);
+        sendEmail(appointment.getAppointmentId(), appointment.getPatientContact(), appointment.getPatientEmail(), subject, body);
     }
 
     @Override
@@ -40,14 +40,15 @@ public class EmailNotificationService implements NotificationObserver {
             return;
         }
 
+        String subject = "Appointment Update: " + appointment.getAppointmentNumber() + " - Sunrise Dental Clinic";
         String body = String.format("Dear %s,\n\nYour appointment %s status has been changed to: %s.\nSunrise Dental Clinic Colombo.",
                 appointment.getPatientName(), appointment.getAppointmentNumber(), newStatus);
 
-        sendEmail(appointment.getAppointmentId(), appointment.getPatientContact(), appointment.getPatientEmail(), body);
+        sendEmail(appointment.getAppointmentId(), appointment.getPatientContact(), appointment.getPatientEmail(), subject, body);
     }
 
-    private void sendEmail(int appointmentId, String contactNumber, String email, String body) {
-        LOGGER.info(String.format("[EMAIL SIMULATOR] Dispatching Email to %s: \"%s\"", email, body));
+    private void sendEmail(int appointmentId, String contactNumber, String email, String subject, String body) {
+        LOGGER.info(String.format("[EMAIL SIMULATOR] Dispatching Email to %s [%s]: \"%s\"", email, subject, body));
 
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement ps = conn.prepareStatement(
@@ -55,7 +56,7 @@ public class EmailNotificationService implements NotificationObserver {
             ps.setInt(1, appointmentId);
             ps.setString(2, contactNumber != null ? contactNumber : "N/A");
             ps.setString(3, email);
-            ps.setString(4, body);
+            ps.setString(4, "[" + subject + "] " + body);
             ps.executeUpdate();
         } catch (Exception e) {
             LOGGER.fine("Email log skipped: " + e.getMessage());

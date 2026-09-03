@@ -10,11 +10,8 @@ import com.sunrisedental.service.strategy.BillingStrategy;
 import com.sunrisedental.service.strategy.BillingStrategyFactory;
 
 import java.math.BigDecimal;
-import java.util.logging.Logger;
 
 public class BillingService {
-
-    private static final Logger LOGGER = Logger.getLogger(BillingService.class.getName());
 
     private final BillDAO billDAO;
     private final AppointmentDAO appointmentDAO;

@@ -10,13 +10,9 @@ import com.sunrisedental.service.observer.NotificationPublisher;
 import com.sunrisedental.util.ValidationUtil;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class AppointmentService {
-
-    private static final Logger LOGGER = Logger.getLogger(AppointmentService.class.getName());
 
     private final AppointmentDAO appointmentDAO;
     private final PatientDAO patientDAO;

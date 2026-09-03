@@ -28,14 +28,23 @@ public class BillingServlet extends HttpServlet {
         String action = req.getParameter("action");
 
         if ("receipt".equals(action)) {
+            String billNo = req.getParameter("billNo");
             String billIdStr = req.getParameter("billId");
             String apptIdStr = req.getParameter("appointmentId");
 
             BillReceiptDTO receipt = null;
-            if (billIdStr != null && !billIdStr.isEmpty()) {
-                receipt = billingService.getReceiptByBillId(Integer.parseInt(billIdStr));
-            } else if (apptIdStr != null && !apptIdStr.isEmpty()) {
-                receipt = billingService.getReceiptByAppointmentId(Integer.parseInt(apptIdStr));
+            if (billNo != null && !billNo.trim().isEmpty()) {
+                receipt = billingService.getReceiptByBillNumber(billNo.trim());
+            } else if (billIdStr != null && !billIdStr.trim().isEmpty()) {
+                if (billIdStr.matches("\\d+")) {
+                    receipt = billingService.getReceiptByBillId(Integer.parseInt(billIdStr));
+                } else {
+                    receipt = billingService.getReceiptByBillNumber(billIdStr.trim());
+                }
+            } else if (apptIdStr != null && !apptIdStr.trim().isEmpty()) {
+                if (apptIdStr.matches("\\d+")) {
+                    receipt = billingService.getReceiptByAppointmentId(Integer.parseInt(apptIdStr));
+                }
             }
 
             if (receipt == null) {
@@ -97,7 +106,7 @@ public class BillingServlet extends HttpServlet {
                     res.put("receipt", receipt);
                     resp.getWriter().write(gson.toJson(res));
                 } else {
-                    resp.sendRedirect(req.getContextPath() + "/billing?action=receipt&billId=" + receipt.getBillNumber());
+                    resp.sendRedirect(req.getContextPath() + "/billing?action=receipt&billNo=" + receipt.getBillNumber());
                 }
             }
 

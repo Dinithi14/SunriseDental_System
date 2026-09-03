@@ -12,6 +12,7 @@ public interface BillDAO {
     Bill findByBillNumber(String billNumber);
     Bill findByAppointmentId(int appointmentId);
     BillReceiptDTO getReceiptByBillId(int billId);
+    BillReceiptDTO getReceiptByBillNumber(String billNumber);
     BillReceiptDTO getReceiptByAppointmentId(int appointmentId);
     int create(Bill bill);
     boolean update(Bill bill);

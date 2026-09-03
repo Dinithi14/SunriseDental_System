@@ -116,6 +116,10 @@ public class BillingService {
         return billDAO.getReceiptByBillId(billId);
     }
 
+    public BillReceiptDTO getReceiptByBillNumber(String billNumber) {
+        return billDAO.getReceiptByBillNumber(billNumber);
+    }
+
     public BillReceiptDTO getReceiptByAppointmentId(int appointmentId) {
         return billDAO.getReceiptByAppointmentId(appointmentId);
     }

@@ -95,6 +95,21 @@ public class BillDAOImpl implements BillDAO {
     }
 
     @Override
+    public BillReceiptDTO getReceiptByBillNumber(String billNumber) {
+        String sql = RECEIPT_QUERY + "WHERE b.bill_number = ?";
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, billNumber);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return mapReceiptRow(rs);
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error fetching receipt by bill number: " + billNumber, e);
+        }
+        return null;
+    }
+
+    @Override
     public BillReceiptDTO getReceiptByAppointmentId(int appointmentId) {
         String sql = RECEIPT_QUERY + "WHERE b.appointment_id = ?";
         try (Connection conn = DatabaseConnection.getInstance().getConnection();

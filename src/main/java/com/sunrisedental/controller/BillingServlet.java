@@ -7,9 +7,9 @@ import com.sunrisedental.model.Bill;
 import com.sunrisedental.service.AppointmentService;
 import com.sunrisedental.service.BillingService;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;

@@ -1,10 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="com.sunrisedental.model.Patient" %>
 <%@ page import="java.util.List" %>
 
 <jsp:include page="includes/header.jsp" />
 
 <%
+    String ctx = request.getContextPath();
     List<Patient> patients = (List<Patient>) request.getAttribute("patients");
 %>
 
@@ -87,7 +88,7 @@
             <button class="close-btn modal-close">&times;</button>
         </div>
 
-        <form action="${pageContext.request.contextPath}/patients" method="POST">
+        <form action="<%= ctx %>/patients" method="POST">
             <input type="hidden" name="action" value="register">
 
             <div class="modal-body">

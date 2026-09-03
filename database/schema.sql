@@ -232,9 +232,9 @@ DELIMITER ;
 -- Salt: "sunrise_salt_2026"
 -- admin123 -> SHA256("admin123sunrise_salt_2026") = 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918 (handled by app security utility)
 INSERT INTO users (username, password_hash, salt, full_name, role, email) VALUES
-('admin', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 'sunrise_salt_2026', 'Mr. Kamal Gunaratne (Clinic Director)', 'ADMIN', 'admin@sunrisedental.lk'),
-('receptionist', '91a27e704870f2f4cb1bb1e37aa9039ad2ce7b1e4a3ab7168b9cfb591b61c9e83063fbf91ee73801f9c15915d3883a48e73cbcd0a2bbdcfe69b5962f3a61e710', 'sunrise_salt_2026', 'Ms. Anoma Wickramasinghe (Head Receptionist)', 'RECEPTIONIST', 'reception@sunrisedental.lk'),
-('drperera', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 'sunrise_salt_2026', 'Dr. Ruwan Perera (BDS, MS Orthodontics)', 'DENTIST', 'dr.perera@sunrisedental.lk');
+('admin', '62bb545326a6f03315b188976ee9ebf5d28524c4c40235960cf80b73d4365bb2', 'sunrise_salt_2026', 'Mr. Kamal Gunaratne (Clinic Director)', 'ADMIN', 'admin@sunrisedental.lk'),
+('receptionist', 'afb8661633954c19070581bc83af302be4e1d6ab4e96ec2ef89309f2020fc482', 'sunrise_salt_2026', 'Ms. Anoma Wickramasinghe (Head Receptionist)', 'RECEPTIONIST', 'reception@sunrisedental.lk'),
+('drperera', 'f33ac4aff59bd525abc5784bd054dd7e90bf602489741d1a6fa744c9026556c8', 'sunrise_salt_2026', 'Dr. Ruwan Perera (BDS, MS Orthodontics)', 'DENTIST', 'dr.perera@sunrisedental.lk');
 
 -- Seed Dentists
 INSERT INTO dentists (dentist_code, full_name, specialization, contact_number, email, consultation_fee, available_days, room_number) VALUES

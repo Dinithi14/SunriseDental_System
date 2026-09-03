@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="com.sunrisedental.dto.AppointmentDetailDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.math.BigDecimal" %>
@@ -6,6 +6,7 @@
 <jsp:include page="includes/header.jsp" />
 
 <%
+    String ctx = request.getContextPath();
     List<AppointmentDetailDTO> appointments = (List<AppointmentDetailDTO>) request.getAttribute("appointments");
     AppointmentDetailDTO selected = (AppointmentDetailDTO) request.getAttribute("selectedAppointment");
 %>
@@ -30,7 +31,7 @@
             <h2 class="card-title">Calculate Patient Invoice</h2>
         </div>
 
-        <form action="${pageContext.request.contextPath}/billing" method="POST">
+        <form action="<%= ctx %>/billing" method="POST">
             <input type="hidden" name="action" value="generate">
 
             <!-- Appointment Selector -->
@@ -130,14 +131,10 @@
             </div>
         </div>
 
-        <div style="margin-top: 1.5rem; background: white; padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem; color: var(--neutral-600); border: 1px solid var(--border-color);">
-            💡 <strong>Design Pattern Note:</strong> The pricing adjustments and concessions are evaluated dynamically via the <code>BillingStrategy</code> Strategy Pattern and Factory.
-        </div>
     </div>
 </div>
 
 <script>
-    // Trigger initial preview computation on load
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof updateBillingPreview === 'function') {
             updateBillingPreview();

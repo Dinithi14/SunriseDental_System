@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="com.sunrisedental.dto.AppointmentDetailDTO" %>
 <%@ page import="com.sunrisedental.model.Dentist" %>
 <%@ page import="com.sunrisedental.model.Treatment" %>
@@ -8,6 +8,7 @@
 <jsp:include page="includes/header.jsp" />
 
 <%
+    String ctx = request.getContextPath();
     List<AppointmentDetailDTO> appointments = (List<AppointmentDetailDTO>) request.getAttribute("appointments");
     List<Dentist> dentists = (List<Dentist>) request.getAttribute("dentists");
     List<Treatment> treatments = (List<Treatment>) request.getAttribute("treatments");
@@ -91,17 +92,17 @@
                         <td>
                             <div style="display: flex; gap: 0.4rem; align-items: center;">
                                 <% if (!"COMPLETED".equalsIgnoreCase(a.getStatus())) { %>
-                                    <a href="${pageContext.request.contextPath}/billing?appNo=<%= a.getAppointmentNumber() %>" class="btn btn-primary btn-sm">
+                                    <a href="<%= ctx %>/billing?appNo=<%= a.getAppointmentNumber() %>" class="btn btn-primary btn-sm">
                                         💳 Bill
                                     </a>
                                 <% } else { %>
-                                    <a href="${pageContext.request.contextPath}/billing?action=receipt&appointmentId=<%= a.getAppointmentId() %>" class="btn btn-success btn-sm">
+                                    <a href="<%= ctx %>/billing?action=receipt&appointmentId=<%= a.getAppointmentId() %>" class="btn btn-success btn-sm">
                                         🧾 Receipt
                                     </a>
                                 <% } %>
 
                                 <!-- Status update form dropdown -->
-                                <form action="${pageContext.request.contextPath}/appointments" method="POST" style="display: inline;">
+                                <form action="<%= ctx %>/appointments" method="POST" style="display: inline;">
                                     <input type="hidden" name="action" value="updateStatus">
                                     <input type="hidden" name="appointmentId" value="<%= a.getAppointmentId() %>">
                                     <select name="status" onchange="this.form.submit()" class="form-select" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; width: auto;">
@@ -129,7 +130,7 @@
             <button class="close-btn modal-close">&times;</button>
         </div>
 
-        <form action="${pageContext.request.contextPath}/appointments" method="POST">
+        <form action="<%= ctx %>/appointments" method="POST">
             <input type="hidden" name="action" value="book">
 
             <div class="modal-body">
@@ -147,7 +148,7 @@
                     </select>
                 </div>
 
-                <!-- Inline New Patient Fields (Hidden by default) -->
+                <!-- Inline New Patient Fields -->
                 <div id="newPatientFields" style="display: none; background: var(--neutral-50); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; border: 1px dashed var(--neutral-300);">
                     <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--primary-dark);">New Patient Details</h4>
                     
@@ -214,7 +215,7 @@
                     </select>
                 </div>
 
-                <!-- Date & Time Slot (Strict Double Booking Prevention) -->
+                <!-- Date & Time Slot -->
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" for="appointmentDate">Appointment Date *</label>

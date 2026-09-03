@@ -1,18 +1,19 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="com.sunrisedental.dto.BillReceiptDTO" %>
 
 <jsp:include page="includes/header.jsp" />
 
 <%
+    String ctx = request.getContextPath();
     BillReceiptDTO r = (BillReceiptDTO) request.getAttribute("receipt");
     if (r == null) {
-        response.sendRedirect(request.getContextPath() + "/billing");
+        response.sendRedirect(ctx + "/billing");
         return;
     }
 %>
 
 <div class="no-print" style="max-width: 800px; margin: 0 auto 1.5rem; display: flex; justify-content: space-between; align-items: center;">
-    <a href="${pageContext.request.contextPath}/billing" class="btn btn-secondary">⬅ Back to Billing</a>
+    <a href="<%= ctx %>/billing" class="btn btn-secondary">⬅ Back to Billing</a>
     <button onclick="window.print()" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">
         🖨️ Print Patient Bill / Receipt
     </button>

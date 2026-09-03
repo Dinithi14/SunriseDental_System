@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="com.sunrisedental.dto.ReportSummaryDTO" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.List" %>
@@ -7,9 +7,10 @@
 <jsp:include page="includes/header.jsp" />
 
 <%
+    String ctx = request.getContextPath();
     ReportSummaryDTO r = (ReportSummaryDTO) request.getAttribute("report");
     if (r == null) {
-        response.sendRedirect(request.getContextPath() + "/reports");
+        response.sendRedirect(ctx + "/reports");
         return;
     }
 %>

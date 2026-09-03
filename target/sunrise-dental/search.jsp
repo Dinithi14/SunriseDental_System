@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="com.sunrisedental.service.AppointmentService" %>
 <%@ page import="com.sunrisedental.dto.AppointmentDetailDTO" %>
 <%@ page import="java.util.List" %>
@@ -6,6 +6,7 @@
 <jsp:include page="includes/header.jsp" />
 
 <%
+    String ctx = request.getContextPath();
     AppointmentService appointmentService = new AppointmentService();
     List<AppointmentDetailDTO> allAppointments = appointmentService.getAllAppointments();
 %>
@@ -90,9 +91,9 @@
                                     🔍 Full Details
                                 </button>
                                 <% if (!"COMPLETED".equalsIgnoreCase(a.getStatus())) { %>
-                                    <a href="${pageContext.request.contextPath}/billing?appNo=<%= a.getAppointmentNumber() %>" class="btn btn-primary btn-sm">💳 Bill</a>
+                                    <a href="<%= ctx %>/billing?appNo=<%= a.getAppointmentNumber() %>" class="btn btn-primary btn-sm">💳 Bill</a>
                                 <% } else { %>
-                                    <a href="${pageContext.request.contextPath}/billing?action=receipt&appointmentId=<%= a.getAppointmentId() %>" class="btn btn-success btn-sm">🧾 Receipt</a>
+                                    <a href="<%= ctx %>/billing?action=receipt&appointmentId=<%= a.getAppointmentId() %>" class="btn btn-success btn-sm">🧾 Receipt</a>
                                 <% } %>
                             </div>
                         </td>

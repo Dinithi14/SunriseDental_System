@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.sunrisedental.model.Patient;
 import com.sunrisedental.service.PatientService;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.HashMap;

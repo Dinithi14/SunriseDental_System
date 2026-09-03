@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <jsp:include page="includes/header.jsp" />
 
 <div class="page-header">
@@ -92,26 +92,6 @@
             • The system automatically produces an itemized, formatted hospital invoice with clinic header, itemized breakdown, discounts, and signature lines.<br>
             • Click <strong>🖨️ Print Patient Bill / Receipt</strong> to send directly to the clinic POS/receipt printer.
         </p>
-    </div>
-</div>
-
-<!-- Architecture & Design Patterns Card for Coursework Criteria -->
-<div class="card" style="background: linear-gradient(135deg, #f8fafc, #e0f2fe); border: 2px solid var(--primary);">
-    <div class="card-header">
-        <h2 class="card-title" style="color: var(--primary-dark);">System Architecture & Design Patterns Reference</h2>
-        <span class="badge badge-completed">CIS6003 Criteria</span>
-    </div>
-    <div style="font-size: 0.92rem; color: var(--neutral-700); line-height: 1.6;">
-        <p><strong>1. Three-Tier Layered Architecture:</strong> Presentation Tier (HTML5/CSS3/JS/JSP) ➔ Business Logic Tier (POJO Services) ➔ Data Access Tier (DAO & JDBC) ➔ Database (MySQL XAMPP).</p>
-        <p><strong>2. Design Patterns Implemented:</strong></p>
-        <ul style="margin-left: 1.5rem; margin-top: 0.4rem;">
-            <li><strong>Singleton Pattern:</strong> <code>DatabaseConnection</code> provides a single thread-safe connection manager.</li>
-            <li><strong>DAO Pattern:</strong> <code>PatientDAO</code>, <code>AppointmentDAO</code>, <code>DentistDAO</code>, <code>TreatmentDAO</code>, <code>BillDAO</code>, <code>UserDAO</code>.</li>
-            <li><strong>Factory Pattern:</strong> <code>DAOFactory</code> and <code>BillingStrategyFactory</code>.</li>
-            <li><strong>Strategy Pattern:</strong> <code>BillingStrategy</code> and concrete tariff implementations.</li>
-            <li><strong>Observer Pattern:</strong> <code>NotificationPublisher</code> simulating automated SMS/Email reminders on appointment events.</li>
-            <li><strong>Model-View-Controller (MVC):</strong> Java Servlets controller dispatching to Model DTOs and JSP views.</li>
-        </ul>
     </div>
 </div>
 

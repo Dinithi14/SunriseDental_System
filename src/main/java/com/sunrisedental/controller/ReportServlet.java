@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.sunrisedental.dto.ReportSummaryDTO;
 import com.sunrisedental.service.ReportService;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "ReportServlet", urlPatterns = {"/reports", "/api/reports"})

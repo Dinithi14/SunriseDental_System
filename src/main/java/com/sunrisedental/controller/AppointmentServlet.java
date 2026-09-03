@@ -9,9 +9,9 @@ import com.sunrisedental.service.DentistService;
 import com.sunrisedental.service.PatientService;
 import com.sunrisedental.service.TreatmentService;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;

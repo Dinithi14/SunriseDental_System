@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="com.sunrisedental.service.AppointmentService" %>
 <%@ page import="com.sunrisedental.service.ReportService" %>
 <%@ page import="com.sunrisedental.service.DentistService" %>
@@ -10,6 +10,7 @@
 <jsp:include page="includes/header.jsp" />
 
 <%
+    String ctx = request.getContextPath();
     ReportService reportService = new ReportService();
     AppointmentService appointmentService = new AppointmentService();
     DentistService dentistService = new DentistService();
@@ -17,16 +18,17 @@
     ReportSummaryDTO summary = reportService.getManagementSummary();
     List<AppointmentDetailDTO> recentAppointments = appointmentService.getAllAppointments();
     List<Dentist> dentists = dentistService.getActiveDentists();
+    String displayName = (session != null && session.getAttribute("fullName") != null) ? (String) session.getAttribute("fullName") : "Staff";
 %>
 
 <div class="page-header">
     <div>
         <h1 class="page-title">Clinic Control Center</h1>
-        <p class="page-subtitle">Welcome back, <strong><%= session.getAttribute("fullName") %></strong>. Here is the operational summary for today.</p>
+        <p class="page-subtitle">Welcome back, <strong><%= displayName %></strong>. Here is the operational summary for today.</p>
     </div>
     <div style="display: flex; gap: 0.75rem;">
-        <a href="${pageContext.request.contextPath}/appointments" class="btn btn-primary">➕ Book Appointment</a>
-        <a href="${pageContext.request.contextPath}/patients" class="btn btn-secondary">👥 Register Patient</a>
+        <a href="<%= ctx %>/appointments" class="btn btn-primary">➕ Book Appointment</a>
+        <a href="<%= ctx %>/patients" class="btn btn-secondary">👥 Register Patient</a>
     </div>
 </div>
 
@@ -71,7 +73,7 @@
     <div class="card">
         <div class="card-header">
             <h2 class="card-title">Recent Patient Appointments</h2>
-            <a href="${pageContext.request.contextPath}/appointments" class="btn btn-secondary btn-sm">View All</a>
+            <a href="<%= ctx %>/appointments" class="btn btn-secondary btn-sm">View All</a>
         </div>
 
         <div class="table-responsive">
@@ -108,7 +110,7 @@
                             </td>
                             <td><span class="badge badge-<%= bClass %>"><%= a.getStatus() %></span></td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/billing?appNo=<%= a.getAppointmentNumber() %>" class="btn btn-secondary btn-sm">Invoice</a>
+                                <a href="<%= ctx %>/billing?appNo=<%= a.getAppointmentNumber() %>" class="btn btn-secondary btn-sm">Invoice</a>
                             </td>
                         </tr>
                     <%  }
@@ -138,11 +140,11 @@
         </div>
 
         <div class="card" style="background: linear-gradient(135deg, #0284c7, #075985); color: white;">
-            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Automated Alerts Active</h2>
+            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">System Status: Operational</h2>
             <p style="font-size: 0.88rem; opacity: 0.9; margin-bottom: 1rem;">
-                SMS & Email notification simulation is active. Double bookings are automatically prevented across all dentist schedules.
+                Automated SMS & Email booking alerts are active. Real-time doctor schedule protection is enabled.
             </p>
-            <a href="${pageContext.request.contextPath}/help.jsp" class="btn" style="background: white; color: #0284c7; font-weight: 600;">Explore Help Manual 📖</a>
+            <a href="<%= ctx %>/help.jsp" class="btn" style="background: white; color: #0284c7; font-weight: 600;">Staff User Guide 📖</a>
         </div>
     </div>
 </div>

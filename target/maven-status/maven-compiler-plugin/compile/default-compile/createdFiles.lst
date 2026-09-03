@@ -45,6 +45,7 @@ com\sunrisedental\dao\impl\TreatmentDAOImpl.class
 com\sunrisedental\config\DatabaseConnection.class
 com\sunrisedental\service\observer\SMSNotificationService.class
 com\sunrisedental\controller\PatientServlet.class
+com\sunrisedental\controller\AuthFilter.class
 com\sunrisedental\dao\TreatmentDAO.class
 com\sunrisedental\dao\BillDAO.class
 com\sunrisedental\service\observer\EmailNotificationService.class

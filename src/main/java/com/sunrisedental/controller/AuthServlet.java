@@ -3,9 +3,9 @@ package com.sunrisedental.controller;
 import com.sunrisedental.model.User;
 import com.sunrisedental.service.AuthService;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "AuthServlet", urlPatterns = {"/auth", "/login", "/logout"})

@@ -33,6 +33,7 @@ C:\Users\dinit\OneDrive\Desktop\6003AP\SunriseDentalSystem\src\main\java\com\sun
 C:\Users\dinit\OneDrive\Desktop\6003AP\SunriseDentalSystem\src\main\java\com\sunrisedental\controller\AppointmentServlet.java
 C:\Users\dinit\OneDrive\Desktop\6003AP\SunriseDentalSystem\src\main\java\com\sunrisedental\dao\DentistDAO.java
 C:\Users\dinit\OneDrive\Desktop\6003AP\SunriseDentalSystem\src\main\java\com\sunrisedental\service\strategy\ChildDiscountBillingStrategy.java
+C:\Users\dinit\OneDrive\Desktop\6003AP\SunriseDentalSystem\src\main\java\com\sunrisedental\controller\AuthFilter.java
 C:\Users\dinit\OneDrive\Desktop\6003AP\SunriseDentalSystem\src\main\java\com\sunrisedental\service\observer\NotificationPublisher.java
 C:\Users\dinit\OneDrive\Desktop\6003AP\SunriseDentalSystem\src\main\java\com\sunrisedental\dao\impl\UserDAOImpl.java
 C:\Users\dinit\OneDrive\Desktop\6003AP\SunriseDentalSystem\src\main\java\com\sunrisedental\service\AuthService.java

@@ -10,7 +10,7 @@
             <strong>Sunrise Dental Clinic Colombo</strong> • Patient & Appointment Management System
         </div>
         <div>
-            Version 1.0.0 • All Rights Reserved &copy; <%= java.time.Year.now().getValue() %>
+            • All Rights Reserved &copy; <%= java.time.Year.now().getValue() %>
         </div>
     </div>
 </footer>
